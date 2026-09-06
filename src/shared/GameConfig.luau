@@ -1,0 +1,20 @@
+local C = {
+ GameVersion="1.0.0", PrototypeStage="LaunchReady", DataVersion=1, MaxPlayers=8, Debug=false,
+ StoreName="CritterHeist_PlayerData_v1", Autosave=60, LeaseSeconds=180, MaxCash=1e15, MaxSpeed=1e12,
+ InteractionDistance=14, HeistTimeout=55, StunSeconds=1.25, CatchDistance=4.2,
+ NewShield=120, ManualShield=60, ShieldCooldown=180, VictimShield=90, ThiefCooldown=75,
+ TheftHold=1.5, TheftPenalty=0.85, TheftTimeout=60, BustDistance=6,
+ DailyCooldown=72000, OfflineCap=7200, OfflineRate=0.2, RebirthCash=1e9,
+ GoldenPeriod=360, GoldenWarning=15, GoldenDuration=60,
+ Rarities={"Common","Uncommon","Rare","Epic","Legendary","Mythic"},
+ RarityWeights={45,27,15,8,4,1},
+ RarityColors={Color3.fromRGB(191,207,217),Color3.fromRGB(114,230,164),Color3.fromRGB(80,183,255),Color3.fromRGB(193,124,255),Color3.fromRGB(255,207,74),Color3.fromRGB(255,108,153)},
+ Mutations={"Normal","Shiny","Giant","Rainbow","Glitched","Celestial"},
+ MutationWeights={90.6,6,2,1,0.35,0.05}, MutationIncome={1,2,4,10,30,100},
+ Tiers={{Name="Quick",Rolls=1,Respawn=6,Depth=40,X=-35,Speed=0.90,HeadStart=24,Color=Color3.fromRGB(101,234,151)},
+ {Name="Risky",Rolls=2,Respawn=8,Depth=80,X=0,Speed=0.99,HeadStart=18,Color=Color3.fromRGB(255,192,68)},
+ {Name="Vault",Rolls=3,Respawn=10,Depth=120,X=35,Speed=1.06,HeadStart=12,Color=Color3.fromRGB(255,99,110)}},
+ Sounds={Grab="rbxasset://sounds/volume_slider.ogg",Alert="rbxasset://sounds/action_get_up.mp3",Success="rbxasset://sounds/action_get_up.mp3",Impact="rbxasset://sounds/impact_water.mp3",Upgrade="rbxasset://sounds/volume_slider.ogg"},
+ Monetization={Cash=0,Speed=0,VIP=0,Luck=0},
+}
+return C

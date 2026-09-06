@@ -35,15 +35,15 @@ The shared economy layer contains:
 
 ### Multiplayer QA
 
-The project includes automated/synthetic and multiplayer QA rather than relying only on manual Studio play-testing.
+The private development build uses synthetic/statistical, multiplayer/concurrency and endurance QA rather than relying only on manual Studio play-testing.
 
-The saved QA snapshots in this repository record:
+The saved result snapshots in this repository record:
 
 - **17/17 synthetic tests passed**, including 100,000-roll rarity and mutation distribution checks, profile serialization, corrupted-profile handling, economy thresholds and all 216 model combinations;
 - **27/27 final multiplayer checks passed** with 8 players, including unique base assignment, simultaneous guardians, theft rejection cases, ownership transfer exactly once, player reset/leave recovery, protected/shielded critters and cleanup/leak checks;
-- a solo endurance script that continues real movement/heist loops for at least **900 seconds (15 minutes)** and asserts runtime-error, orphan-carry, UI-duplication and instance-growth conditions.
+- an endurance test in the private QA harness that runs repeated movement/heist cycles for at least **900 seconds (15 minutes)** and checks runtime errors, orphaned carry models, UI duplication and instance growth.
 
-These JSON files are retained as test-result snapshots; they are not intended to substitute for rerunning QA against future game revisions.
+The JSON files under [`qa/`](qa/) are retained as evidence for that tested snapshot, not as a permanent guarantee for later revisions.
 
 ## Start here
 
@@ -61,7 +61,7 @@ Roblox client
     │
     │ interaction requests / UI events
     ▼
-Server bootstrap
+Server authority
     ├── PlayerStateService    session state, rate limits, spatial validation
     ├── DataService           DataStore persistence, leases, transfer recovery
     ├── BaseService           base ownership, pads, shields and upgrades
@@ -89,26 +89,26 @@ See [`docs/architecture.md`](docs/architecture.md) for the persistence and theft
 src/
   shared/    deterministic game/economy definitions
   server/    persistence, authority, progression and heist/theft services
-  client/    selected interaction/audio/FX bootstrap code
 qa/
-  synthetic.luau
-  multiplayer.luau
-  solo-endurance.luau
-  *-results.json
+  README.md
+  synthetic-results.json
+  multiplayer-final-results.json
+docs/
+  architecture.md
 ```
 
 ## Why this is a curated snapshot
 
-The complete development workspace also contains the Roblox `.rbxl` place, procedural world-building/presentation code, full UI implementation and art-pass code. Those pieces are intentionally not published here.
+The complete development workspace also contains the Roblox `.rbxl` place, procedural world-building/presentation code, the full client UI, art-pass code and the full QA harness. Those pieces are intentionally not published here.
 
 The goal of this repository is to make the underlying multiplayer engineering inspectable without publishing the entire game or every presentation asset.
 
-The source files are snapshots from the active project, so some modules reference private presentation/world modules that are not included here. This repository is therefore for **technical review**, not a one-command reproduction of the full experience.
+Some public server modules therefore reference private presentation/world modules that are not included here. This repository is for **technical review**, not a one-command reproduction of the full experience.
 
 ## Current limitations
 
 - Active work in progress; balance and content are still changing.
 - No public experience link yet.
-- The public repository excludes the full Roblox place and presentation layer.
+- The public repository excludes the full Roblox place, presentation layer and QA harness.
 - Saved QA results describe the tested snapshot and should be rerun after material changes.
 - The internal `PrototypeStage` value in the captured configuration reflects that snapshot's QA milestone; it should not be read as a claim that the overall game has been publicly shipped.
